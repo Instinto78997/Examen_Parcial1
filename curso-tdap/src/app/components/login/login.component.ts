@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -15,9 +15,12 @@ export class LoginComponent {
 
   constructor(private authService: AuthService) {}
 
-  login(username: string, password: string) {
-    this.authService.Login(username, password)
-      .subscribe(res => console.log('UI', res));
+  login(username: string, password: string) { 
+    this.authService.login(username, password)
+      .subscribe(response => {
+        if (response.success) { 
+          console.log('Login correcto');
+        }
+      }); 
   }
-
 }
