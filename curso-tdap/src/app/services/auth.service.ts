@@ -8,7 +8,7 @@ export class AuthService {
 
   login(username: string, password: string) {
     if (username === 'admin' && password === '1234') {
-      return of({ success: true});
+      return of({ success: true });
     }
     return of({ success: false });
   }

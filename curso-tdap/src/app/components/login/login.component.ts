@@ -16,10 +16,19 @@ export class LoginComponent {
   constructor(private authService: AuthService) {}
 
   login(username: string, password: string) { 
+
+    if (!username || !password) {
+      console.log('Campos requeridos');
+      return;
+    }
+
+
     this.authService.login(username, password)
-      .subscribe(response => {
-        if (response.success) { 
-          console.log('Login correcto');
+      .subscribe(res => {
+        console.log('Validation', res); 
+        
+        if (res.success) { 
+          console.log('Login correcto'); 
         }
       }); 
   }
