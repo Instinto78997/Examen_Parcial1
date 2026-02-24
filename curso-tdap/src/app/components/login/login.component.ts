@@ -5,16 +5,19 @@ import { AuthService } from '../../services/auth.service';
   selector: 'app-login',
   styleUrls: ['./login.component.scss'],
   template: `
-    <button (click)="login()">Login</button>
+    <h1>Login</h1>
+    <input placeholder="Usuario" #user>
+    <input type="password" placeholder="Password" #pass>
+    <button (click)="login(user.value, pass.value)">Login</button>
   `
 })
 export class LoginComponent {
 
   constructor(private authService: AuthService) {}
 
-  login() {
-    this.authService.Login('admin', '12345')
-      .subscribe((res: any) => console.log(res));
+  login(username: string, password: string) {
+    this.authService.Login(username, password)
+      .subscribe(res => console.log('UI', res));
   }
 
 }
